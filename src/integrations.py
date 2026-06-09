@@ -41,6 +41,35 @@ INTEGRATION_PRESETS: Dict[str, Dict[str, Any]] = {
             "  PUT /v1/entries/{id}/bookmark — toggle bookmark"
         ),
     },
+    "github": {
+        "name": "GitHub",
+        "auth_type": "header",
+        "auth_header": "Authorization",
+        "description": (
+            "GitHub REST API (v3). Base URL: https://api.github.com. "
+            "Auth header value format: 'Bearer YOUR_TOKEN' (fine-grained PAT or classic PAT). "
+            "Always send Accept: application/vnd.github+json. Key endpoints:\n"
+            "  GET /user/repos — list your repos (params: sort, direction, per_page, page)\n"
+            "  GET /repos/{owner}/{repo} — get repo details\n"
+            "  GET /repos/{owner}/{repo}/pulls — list pull requests (params: state=open|closed|all, head, base, sort, direction, per_page)\n"
+            "  GET /repos/{owner}/{repo}/pulls/{pull_number} — get PR details\n"
+            "  POST /repos/{owner}/{repo}/pulls — create PR {\"title\": \"...\", \"head\": \"branch\", \"base\": \"main\", \"body\": \"...\"}\n"
+            "  PATCH /repos/{owner}/{repo}/pulls/{pull_number} — update PR (title, body, state, base)\n"
+            "  GET /repos/{owner}/{repo}/pulls/{pull_number}/files — list files changed in PR\n"
+            "  GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews — list reviews on PR\n"
+            "  POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews — create review {\"body\": \"...\", \"event\": \"APPROVE|REQUEST_CHANGES|COMMENT\"}\n"
+            "  PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge — merge PR {\"merge_method\": \"merge|squash|rebase\"}\n"
+            "  GET /repos/{owner}/{repo}/issues — list issues (params: state, labels, sort, direction, per_page)\n"
+            "  POST /repos/{owner}/{repo}/issues — create issue {\"title\": \"...\", \"body\": \"...\", \"labels\": [...]}\n"
+            "  PATCH /repos/{owner}/{repo}/issues/{issue_number} — update issue\n"
+            "  POST /repos/{owner}/{repo}/issues/{issue_number}/comments — add comment {\"body\": \"...\"}\n"
+            "  GET /repos/{owner}/{repo}/commits — list commits (params: sha, per_page)\n"
+            "  GET /repos/{owner}/{repo}/branches — list branches\n"
+            "  GET /repos/{owner}/{repo}/contents/{path} — get file content (returns base64)\n"
+            "  GET /repos/{owner}/{repo}/actions/runs — list workflow runs\n"
+            "  GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs — list jobs for a run"
+        ),
+    },
     "gitea": {
         "name": "Gitea",
         "auth_type": "header",
